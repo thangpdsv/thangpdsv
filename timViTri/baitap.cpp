@@ -10,32 +10,25 @@ void show(vector<int> arr){
     }
     cout << endl;
 }
-//find index of element in array using binary search
+//find index of element in array using linear search
 int findIndex(vector<int> arr, int x){
-    int left = 0;
-    int right = arr.size() - 1;
-    while (left <= right)
+    for (int i = arr.size() -1 ; i >=0 ; i--)
     {
-        int mid = (left + right)/2;
-        if(arr[mid] == x){
-            return mid;
-        }
-        else if(arr[mid] < x){
-            left = mid + 1;
-        }
-        else{
-            right = mid - 1;
+        // cout << i << " ";
+        // cout << arr[i] << " ";
+        // cout   << x << endl;
+        if(arr[i] == x){
+            return i;
         }
     }
     return -1;
-    
 }
 
 
 int main()
 {
 
-     int nArr;
+    int nArr;
     cin >> nArr;
 
     vector<int> arr(nArr);
@@ -50,9 +43,12 @@ int main()
     {
         cin >> res[i];
     }
-    for (int i = 0; i < nArr; i++)
+    // show(arr);
+    // show(res);
+    // cout << arr[9];
+        for (int i = 0; i < res.size(); i++)
     {
-        cout << findIndex(arr, res[i]) << " ";
+        cout << findIndex(arr, res[i]) << endl;
     }
 
     return 0;
