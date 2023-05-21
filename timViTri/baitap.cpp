@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include <unordered_map>
 using namespace std;
 
 void show(vector<int> arr){
@@ -11,18 +11,42 @@ void show(vector<int> arr){
     cout << endl;
 }
 //find index of element in array using linear search
-int findIndex(vector<int> arr, int x){
-    for (int i = arr.size() -1 ; i >=0 ; i--)
-    {
-        // cout << i << " ";
-        // cout << arr[i] << " ";
-        // cout   << x << endl;
-        if(arr[i] == x){
-            return i;
+// int findIndex(vector<int> arr, int x){
+//     for (int i = arr.size() -1 ; i >=0 ; i--)
+//     {
+//         // cout << i << " ";
+//         // cout << arr[i] << " ";
+//         // cout   << x << endl;
+//         if(arr[i] == x){
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
+//find the right index of element in array using binary search but the arr not sorting
+
+
+vector<int> findIndices(const vector<int>& arr, const vector<int>& res) {
+    unordered_map<int, int> hashTable;
+    vector<int> indices;
+
+    // Build the hash table
+    for (int i = 0; i < arr.size(); i++) {
+        hashTable[arr[i]] = i;
+    }
+
+    // Perform search for each element in 'res'
+    for (int i = 0; i < res.size(); i++) {
+        if (hashTable.count(res[i]) > 0) {
+            indices.push_back(hashTable[res[i]]);
+        } else {
+            indices.push_back(-1);
         }
     }
-    return -1;
+
+    return indices;
 }
+
 
 
 int main()
@@ -46,9 +70,10 @@ int main()
     // show(arr);
     // show(res);
     // cout << arr[9];
-        for (int i = 0; i < res.size(); i++)
-    {
-        cout << findIndex(arr, res[i]) << endl;
+    vector<int> indices = findIndices(arr, res);
+
+    for (int i = 0; i < indices.size(); i++) {
+        cout << indices[i] << endl;
     }
 
     return 0;
