@@ -11,21 +11,19 @@ void show(vector<int> arr){
     cout << endl;
 }
 //find index of element in array using linear search
-// int findIndex(vector<int> arr, int x){
-//     for (int i = arr.size() -1 ; i >=0 ; i--)
-//     {
-//         // cout << i << " ";
-//         // cout << arr[i] << " ";
-//         // cout   << x << endl;
-//         if(arr[i] == x){
-//             return i;
-//         }
-//     }
-//     return -1;
-// }
-//find the right index of element in array using binary search but the arr not sorting
-
-
+int findIndex(vector<int> arr, int x){
+    for (int i = arr.size() -1 ; i >=0 ; i--)
+    {
+        // cout << i << " ";
+        // cout << arr[i] << " ";
+        // cout   << x << endl;
+        if(arr[i] == x){
+            return i;
+        }
+    }
+    return -1;
+}
+//Using a hash table
 vector<int> findIndices(const vector<int>& arr, const vector<int>& res) {
     unordered_map<int, int> hashTable;
     vector<int> indices;
